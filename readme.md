@@ -11,7 +11,7 @@ go kratos框架工具命令kratos V2
 
 ## 首先本地构建一个docker镜像
 
-docker build -t kratos:v2 .
+docker build -t kratos .
 
 ## 常用命令示例
 
@@ -22,7 +22,7 @@ kratos new helloworld
 ```
 
 ```bash 
-docker run -it --rm --dns "114.114.114.114" -v $(pwd):/go/src/app/  -w ./ --name test-kratos kratos:v2 kratos new helloworld
+docker run -it --rm --dns "114.114.114.114" -v $(pwd):/go/src/app/  -w ./ --name test-kratos kratos kratos new helloworld
 ```
 
 > `切换进入宿主机项目目录 ：helloworld， 执行之后的命令`
@@ -31,19 +31,19 @@ docker run -it --rm --dns "114.114.114.114" -v $(pwd):/go/src/app/  -w ./ --name
 - 安装
 
 ```
-docker run -it --rm --dns "114.114.114.114" -v $(pwd):/go/src/app/  --name  test-kratos kratos:v2 go mod vendor 
+docker run -it --rm --dns "114.114.114.114" -v $(pwd):/go/src/app/  --name  test-kratos kratos go mod vendor 
 ```
 
 - go build 
 
 ```bash 
-docker run -it --rm  -v $(pwd):/go/src/app/ --name test-kratos kratos:v2 go build -mod=vendor -o ./bin/  cmd/helloworld/
+docker run -it --rm  -v $(pwd):/go/src/app/ --name test-kratos kratos go build -mod=vendor -o ./bin/  cmd/helloworld/
 ```
 
 - run 
 
 ```bash 
-docker run -it  --dns "114.114.114.114" --rm -v $(pwd):/go/src/app  kratos:v2 go run -mod=vendor  ./cmd/helloworld/ -conf ./configs
+docker run -it  --dns "114.114.114.114" --rm -v $(pwd):/go/src/app  kratos go run -mod=vendor  ./cmd/helloworld/ -conf ./configs
 ```
 
 - 生成proto模板
@@ -53,7 +53,7 @@ docker run -it  --dns "114.114.114.114" --rm -v $(pwd):/go/src/app  kratos:v2 go
 ```
 // kratos proto add api/test/test.proto
 
-docker run -it --rm -v $(pwd):/go/src/app kratos:v2 kratos proto add api/test/test.proto
+docker run -it --rm -v $(pwd):/go/src/app kratos kratos proto add api/test/test.proto
 
 ```
 
@@ -62,7 +62,7 @@ docker run -it --rm -v $(pwd):/go/src/app kratos:v2 kratos proto add api/test/te
 ```
  kratos proto client api/test/test.proto
 
- docker run -it --rm -v $(pwd):/go/src/app kratos:v2 kratos proto client api/test/test.proto
+ docker run -it --rm -v $(pwd):/go/src/app kratos kratos proto client api/test/test.proto
 
 ```
 
@@ -78,6 +78,6 @@ docker run -it --rm -v $(pwd):/go/src/app kratos:v2 kratos proto add api/test/te
 kratos proto server api/test/test.proto -t internal/service
 
 
-docker run -it --rm -v $(pwd):/go/src/app kratos:v2 kratos proto server api/test/test.proto -t internal/service
+docker run -it --rm -v $(pwd):/go/src/app kratos kratos proto server api/test/test.proto -t internal/service
 
 ```
