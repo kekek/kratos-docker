@@ -57,13 +57,6 @@ docker run -it --rm -v $(pwd):/go/src/app kratos:v2 kratos proto add api/test/te
 
 ```
 
-`这时候需要修改一下 api/test/test.proto 的go_package 选项,删除helloworld目录, 不然生成的文件目录有问题`
-```
-option go_package = "helloworld/api/test;test";
-option go_package = "api/test;test";
-
-```
-
 - 生成 proto 源码
 
 ```
