@@ -66,12 +66,6 @@ docker run -it --rm -v $(pwd):/go/src/app kratos kratos proto add api/test/test.
 
 ```
 
-执行此条命令后，会报一个错误` directory does not exist`, 此时应该 重新 执行`go mod vendor`
-```
-/go/pkg/mod/github.com/go-kratos/kratos/v2@v2.0.0: warning: directory does not exist.
-/go/pkg/mod/github.com/go-kratos/kratos/v2@v2.0.0/third_party: warning: directory does not exist.
-```
-
 - 生成server模板
 
 ```
