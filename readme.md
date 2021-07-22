@@ -75,3 +75,30 @@ kratos proto server api/test/test.proto -t internal/service
 docker run -it --rm -v $(pwd):/go/src/app kratos kratos proto server api/test/test.proto -t internal/service
 
 ```
+
+
+- swagger 生成 
+
+ 首先在Dockerfile 中添加新指令， 重新构建镜像 
+
+```
+ RUN go get -u github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-openapiv2
+
+```
+ 
+然后， 在docker中运行下面的命令
+```
+protoc --proto_path=. \
+        --proto_path=./third_party \
+        --openapiv2_out . \
+        --openapiv2_opt logtostderr=true \
+        --openapiv2_opt json_names_for_fields=false \
+        api/test/test.proto
+
+```
+
+
+
+- fix 
+
+`google/protobuf/descriptor.proto: File not found.` 出现这个错误是因为apk add protobuf 自带的引用包没有 这些文件， 使用 protobuf-dev 

@@ -1,6 +1,6 @@
 FROM golang:1.16-alpine
 
-RUN apk update && apk add --no-cache protobuf \
+RUN apk update && apk add protobuf-dev \
     && apk add  --no-cache git
 RUN go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
 
