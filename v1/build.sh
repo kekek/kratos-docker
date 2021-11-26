@@ -2,6 +2,8 @@
 
 echo ">> build images"
 echo "docker build -t kratos:v1.1 ."
+echo 
+echo "docker build --network host -t kratos:v1.1 ."
 echo
 
 echo ">> run test-kratos"
