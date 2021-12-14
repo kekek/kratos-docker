@@ -4,7 +4,8 @@ RUN apk update && apk add protobuf-dev \
     && apk add  --no-cache git \
 	&& apk add gcc
 
-RUN go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
+#RUN go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
+RUN go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.26
 
 #RUN go get -u github.com/go-kratos/kratos@v1.0.1
 RUN go get -u github.com/go-kratos/kratos/tool/kratos@v1.0.1
